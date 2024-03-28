@@ -1,0 +1,93 @@
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.img0 { height: 300px;}
+.img1 { height: 300px;}
+.img2 { height: 300px;}
+.img4 { height: 300px;}
+.img3 { height: 300px;}
+.img5 { height: 300px;}
+.img6 { height: 300px;}
+.img7 { height: 300px;}
+.img8 { height: 300px;}
+.img9 { height: 250px;}
+.imgb { height: 300px;}
+.imgr { height: 300px;}
+.vid1 { height: 300px;}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.imgb:hover {
+    filter: drop-shadow(0 0 2em #f6f202aa);
+  
+}
+.imgr:hover {
+  filter: drop-shadow(0 0 2em #f6f202aa);
+
+}
+body {
+  background-color: black;
+}
+
+.card:hover {
+  filter: drop-shadow(0 0 2em #f6f202);}
+
+.nigel {
+  color: rgb(253, 252, 252);
+}
+.holes{
+  color: white;
+}
+ul {
+  list-style: none; /* Remove the bullet points from unordered lists */
+}
+a:hover {
+  text-shadow: 2px 2px 5px rgb(248, 245, 245);
+}
+/* App.css */
+
+.quiz-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.question-section {
+  margin-bottom: 20px;
+}
+
+.question-count {
+  font-size: 18px;
+}
+
+.question-text {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.answer-section button {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ffea00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.answer-section button:hover {
+  background-color: #fcef04;
+}
