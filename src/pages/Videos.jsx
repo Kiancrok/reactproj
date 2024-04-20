@@ -2,7 +2,7 @@ import React from 'react';
 
 function Videos() {
   return (
-    <div style={{ position: 'relative' }}>
+    <div  className="flex flex-col items-center justify-center min-h-screen">
       <h2>Video Player</h2>
       <video style={{ position: 'absolute', left: 50}}width="200" controls>
         <source className='vid1'src="/images/EXXF3635.mp4" type="video/mp4" />

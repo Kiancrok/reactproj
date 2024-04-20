@@ -19,6 +19,7 @@ function Rust() {
       <img className='img9' src='/images/IMG_0273.JPG' alt='' style={{ margin: '3px' }}/>
       <img className='img9' src='/images/IMG_0388.JPG' alt='' style={{ margin: '3px' }}/>
       <img className='img9' src='/images/IMG_0898.JPG' alt='' style={{ margin: '3px' }}/>
+      <img className='img9' src='/images/IMG_1075.JPG' alt='' style={{ margin: '3px' }}/>
     </div>
     </div >
   );

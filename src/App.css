@@ -16,6 +16,7 @@
 .imgb { height: 300px;}
 .imgr { height: 300px;}
 .vid1 { height: 300px;}
+.insta { height: 20px;}
 
 @keyframes logo-spin {
   from {
@@ -52,7 +53,7 @@ ul {
 a:hover {
   text-shadow: 2px 2px 5px rgb(248, 245, 245);
 }
-/* App.css */
+
 
 .quiz-container {
   margin: 20px auto;
@@ -90,4 +91,7 @@ a:hover {
 
 .answer-section button:hover {
   background-color: #fcef04;
+}
+.boldLink {
+  font-weight: bold;
 }

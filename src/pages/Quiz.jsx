@@ -1,78 +1,105 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Quiz() {
-  const questions = [
-    {
-      questionText: 'What year was the Mazda MK1 MX-5 first introduced?',
-      answerOptions: [
-        { answerText: '1989', isCorrect: true },
-        { answerText: '1990', isCorrect: false },
-        { answerText: '1987', isCorrect: false },
-        { answerText: '1991', isCorrect: false },
-      ],
-    },
-    {
-      questionText: 'What is the engine displacement of Nigel the Mazda MK1 MX-5?',
-      answerOptions: [
-        { answerText: '1.6L', isCorrect: true },
-        { answerText: '1.8L', isCorrect: false },
-        { answerText: '2.0L', isCorrect: false },
-        { answerText: '1.4L', isCorrect: false },
-      ],
-    },
-    {
-      questionText: 'Which of the following features was unique to the Mazda MK1 MX-5?',
-      answerOptions: [
-        { answerText: 'Pop-up headlights', isCorrect: true },
-        { answerText: 'Turbocharged engine', isCorrect: false },
-        { answerText: 'All-wheel drive', isCorrect: false },
-        { answerText: 'Hybrid powertrain', isCorrect: false },
-      ],
-    },
-    {
-      questionText: 'What was the original name of the Mazda MX-5 in Japan?',
-      answerOptions: [
-        { answerText: 'Miata', isCorrect: false },
-        { answerText: 'Roadster', isCorrect: true },
-        { answerText: 'Eunos', isCorrect: false },
-        { answerText: 'MX-5', isCorrect: false },
-      ],
-    },
-    {
-      questionText: 'What year was Nigel made?',
-      answerOptions: [
-        { answerText: '1992', isCorrect: true },
-        { answerText: '1990', isCorrect: false },
-        { answerText: '1993', isCorrect: false },
-        { answerText: '1991', isCorrect: false },
-      ],
-    },
-    {
-      questionText: 'What colour are Nigel\'s brake calipers?',
-      answerOptions: [
-        { answerText: 'Black', isCorrect: false },
-        { answerText: 'Red', isCorrect: false },
-        { answerText: 'Yellow', isCorrect: true },
-        { answerText: 'White', isCorrect: false },
-      ],
-    },
-  ];
+  const initialQuestions = [
+      {
+        questionText: 'What year was the Mazda MK1 MX-5 first introduced?',
+        answerOptions: [
+          { answerText: '1989', isCorrect: true },
+          { answerText: '1990', isCorrect: false },
+          { answerText: '1987', isCorrect: false },
+          { answerText: '1991', isCorrect: false },
+        ],
+      },
+      {
+        questionText: 'What is the engine displacement of Nigel the Mazda MK1 MX-5?',
+        answerOptions: [
+          { answerText: '1.6L', isCorrect: true },
+          { answerText: '1.8L', isCorrect: false },
+          { answerText: '2.0L', isCorrect: false },
+          { answerText: '1.4L', isCorrect: false },
+        ],
+      },
+      {
+        questionText: 'Which of the following features was unique to the Mazda MK1 MX-5?',
+        answerOptions: [
+          { answerText: 'Pop-up headlights', isCorrect: true },
+          { answerText: 'Turbocharged engine', isCorrect: false },
+          { answerText: 'All-wheel drive', isCorrect: false },
+          { answerText: 'Hybrid powertrain', isCorrect: false },
+        ],
+      },
+      {
+        questionText: 'What was the original name of the Mazda MX-5 in Japan?',
+        answerOptions: [
+          { answerText: 'Miata', isCorrect: false },
+          { answerText: 'Roadster', isCorrect: true },
+          { answerText: 'Eunos', isCorrect: false },
+          { answerText: 'MX-5', isCorrect: false },
+        ],
+      },
+      {
+        questionText: 'What year was Nigel made?',
+        answerOptions: [
+          { answerText: '1992', isCorrect: true },
+          { answerText: '1990', isCorrect: false },
+          { answerText: '1993', isCorrect: false },
+          { answerText: '1991', isCorrect: false },
+        ],
+      },
+      {
+        questionText: "What color are Nigel's brake calipers?",
+        answerOptions: [
+          { answerText: 'Black', isCorrect: false },
+          { answerText: 'Red', isCorrect: false },
+          { answerText: 'Yellow', isCorrect: true },
+          { answerText: 'White', isCorrect: false },
+        ],
+      },
+    ];
+    
+
+  const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
 
+  useEffect(() => {
+    setQuestions(shuffleArray(initialQuestions));
+  }, []);
+
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array];
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  };
+
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
-      setScore(score + 1);
+        setScore(score + 1);
     }
 
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
-      setCurrentQuestion(nextQuestion);
+        const shuffledAnswerOptions = shuffleArray(questions[nextQuestion].answerOptions);
+        setQuestions(prevQuestions => {
+            const updatedQuestions = [...prevQuestions];
+            updatedQuestions[nextQuestion].answerOptions = shuffledAnswerOptions;
+            return updatedQuestions;
+        });
+        setCurrentQuestion(nextQuestion);
     } else {
-      setShowScore(true);
+        setShowScore(true);
     }
-  };
+};
+
+if (questions.length === 0 || currentQuestion >= questions.length) {
+  return <div>Loading...</div>;
+}
+
 
   return (
     <div className='quiz-container' style={{ color: 'white' }}>

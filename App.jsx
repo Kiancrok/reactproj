@@ -9,6 +9,7 @@ import Brakes from "./pages/Brakes"
 import Rust from "./pages/Rust"
 import Videos from "./pages/Videos"
 import Quiz from "./pages/Quiz"
+import Interior from "./pages/Interior"
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/photos/*" element={<Photos />} /> {/* This route is for /photos and all its children */}
       <Route path="/photos/brakes" element={<Brakes />} />
       <Route path="/photos/rust" element={<Rust />} />
+      <Route path="/photos/interior" element={<Interior />} />
     </Routes>
   )
 }
